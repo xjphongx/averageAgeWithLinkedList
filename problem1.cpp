@@ -2,7 +2,6 @@
 #include <iomanip>
 #include<string>
 #include<cstdlib> // must be included for linkedlist
-//#include "list.h"
 
 using namespace std;
 struct node
@@ -14,31 +13,30 @@ class list
 {
     private:
         node *head;
-        node *tail;
         
-
     public:
         list()
         {
             head = nullptr;
-            tail = nullptr;
         }
         void createNode(int value) // this adds at end
         {
             node* temp = new node;
             temp->data = value;
             temp->next = nullptr;
-            if(head == nullptr)
+
+            node * curr;
+            node * prev;
+            curr = head;
+
+            while(head != nullptr)
             {
-                head = temp;
-                tail = temp;
-                temp = nullptr;
+                prev = curr;
+                curr = curr->next;
             }
-            else
-            {// a little confused here
-                tail->next = temp;
-                tail =temp;
-            }
+            prev->next = temp;
+            temp->next = nullptr;
+            
             
 
         }
