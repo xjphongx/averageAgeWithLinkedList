@@ -25,18 +25,25 @@ class list
             temp->data = value;
             temp->next = nullptr;
 
-            node * curr;
-            node * prev;
-            curr = head;
-
-            while(head != nullptr)
+            if(head==nullptr)
             {
-                prev = curr;
-                curr = curr->next;
+                head = temp;
+                temp = nullptr;
             }
-            prev->next = temp;
-            temp->next = nullptr;
-            
+            else
+            {
+                node * curr;
+                node * prev;
+                curr = head;
+
+                while(curr != nullptr)
+                {
+                    prev = curr;
+                    curr = curr->next;
+                }
+                prev->next = temp;
+                
+            }
             
 
         }
@@ -146,6 +153,15 @@ int main()
     cout << "adding 20 to the index position 3"<<endl;
     LinkedList.displayList();
     cout << endl;
+    cout<< "adding 1 - 5 to the list"<<endl;
+    for(int a = 1; a <6; a++)
+    {
+        LinkedList.createNode(a);
+    }
+    LinkedList.displayList();
+
+
+
 
     //average
     int ave = LinkedList.findAverage();
